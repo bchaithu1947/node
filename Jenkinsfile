@@ -16,16 +16,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                // optional if you have a build step
                 sh 'npm run build || true'
             }
         }
 
-        stage('Restart App with PM2') {
+        stage('Start App') {
             steps {
                 sh '''
-                pm2 delete all || true
-                pm2 start app.js --name node-app
+                pm2 delete node-app || true
+                pm2 start server.js --name node-app
                 pm2 save
                 '''
             }
