@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                 pm2 delete node-app || true
-                pm2 start server.js --name node-app
+                pm2 start app.js --name node-app
                 pm2 save
                 '''
             }
